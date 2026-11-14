@@ -1,0 +1,231 @@
+/*
+  AYURLATE — Global Design System
+  ================================
+  This file sets up the design tokens and base styles for the entire application.
+
+  Design tokens are defined as CSS custom properties (variables) so they can be
+  referenced consistently across all components. We use Tailwind v4's @theme
+  directive to register these as Tailwind utilities.
+
+  Fonts:
+  - Cormorant Garamond: elegant serif for headings
+  - Inter: modern sans-serif for body text and UI
+*/
+
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────────────────────────────── */
+
+@theme {
+  /* Brand Colours — AUREATE Confirmed Palette */
+  --color-forest:      #263B2D;   /* Evergreen — primary brand colour */
+  --color-forest-dark: #1b2b20;   /* Deep evergreen for hover/active states */
+  --color-sage:        #78866B;   /* Sage green — botanical secondary accent */
+  --color-sage-light:  #94a485;   /* Lighter sage for backgrounds & tags */
+  --color-ivory:       #F8F5ED;   /* Warm ivory — primary natural background */
+  --color-ivory-dark:  #eee8da;   /* Darker ivory for card backgrounds */
+  --color-gold:        #B69A62;   /* Muted gold — luxury metallic accent */
+  --color-gold-light:  #c9af7a;   /* Lighter gold for hover states */
+
+  /* Neutral Shades */
+  --color-stone-100:   #f7f4ef;
+  --color-stone-200:   #ede9e1;
+  --color-stone-300:   #d8d2c6;
+  --color-stone-400:   #b8b0a2;
+  --color-stone-500:   #8c8070;
+  --color-stone-600:   #6b6055;
+  --color-stone-700:   #4a4038;
+  --color-stone-800:   #2e261e;
+  --color-stone-900:   #1a1410;
+
+  /* Typography Families */
+  --font-serif:  "Cormorant Garamond", "Georgia", serif;
+  --font-sans:   "Inter", "system-ui", sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs:   0.75rem;    /* 12px */
+  --font-size-sm:   0.875rem;   /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg:   1.125rem;   /* 18px */
+  --font-size-xl:   1.25rem;    /* 20px */
+  --font-size-2xl:  1.5rem;     /* 24px */
+  --font-size-3xl:  1.875rem;   /* 30px */
+  --font-size-4xl:  2.25rem;    /* 36px */
+  --font-size-5xl:  3rem;       /* 48px */
+  --font-size-6xl:  3.75rem;    /* 60px */
+  --font-size-7xl:  4.5rem;     /* 72px */
+
+  /* Spacing — Tailwind's default scale is preserved; these are extras */
+  --spacing-18:  4.5rem;
+  --spacing-22:  5.5rem;
+  --spacing-26:  6.5rem;
+
+  /* Border Radius */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-soft:    0 2px 20px 0 rgba(35, 59, 47, 0.08);
+  --shadow-card:    0 4px 30px 0 rgba(35, 59, 47, 0.12);
+  --shadow-lifted:  0 8px 40px 0 rgba(35, 59, 47, 0.16);
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────── */
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: 1.65;
+    color: var(--color-stone-800);
+    background-color: var(--color-ivory);
+    min-height: 100dvh;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+  /* Headings use the elegant serif font by default */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+  }
+}
+
+/* Smooth image rendering */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Screen reader only utility for assistive technology */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: revert;
+  margin: revert;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Touch targets: ensure minimum 44px interactive area on mobile */
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Prevent auto-zooming on iOS when focusing form inputs */
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ─── Utility Classes ────────────────────────────────────────────────────── */
+
+/* Container with consistent max-width and horizontal padding */
+.container-site {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-site {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-site {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Text selection colour matches brand */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-forest);
+}
+
+/* Scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivory-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-sage);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest);
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────────────────── */
+/*
+  Respects the user's OS preference for reduced motion.
+  All animations in the app should respect this via motion's
+  useReducedMotion hook or by checking this media query.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
