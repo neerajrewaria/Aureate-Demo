@@ -69,22 +69,20 @@ export default function Navbar() {
         <div className="container-site">
           <div className="flex items-center justify-between h-18 md:h-22">
             
-            {/* ── Brand Logo ── */}
+            {/* ── Brand Logo (matches exact brand icon in Footer) ── */}
             <Link
               to="/"
-              className="flex items-center gap-3.5 group py-1"
+              className="flex items-center gap-3 group py-1"
               onClick={closeMobileMenu}
               aria-label="AUREATE Home"
             >
-              <div className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-[#122417] border border-gold/40 flex items-center justify-center p-1 overflow-hidden transition-transform group-hover:scale-105">
-                <img
-                  src={aureateLogo}
-                  alt="AUREATE Official Emblem"
-                  className="w-full h-full object-contain filter invert contrast-125"
-                />
-              </div>
+              <img
+                src={aureateLogo}
+                alt="AUREATE Official Emblem"
+                className="h-10 md:h-11 w-auto object-contain rounded-md transition-transform duration-300 group-hover:scale-105"
+              />
               <span className="font-serif text-2xl md:text-3xl font-medium tracking-[0.08em] text-[#F8F5ED] uppercase group-hover:text-gold transition-colors">
-                Aureate
+                AUREATE
               </span>
             </Link>
 
@@ -167,9 +165,16 @@ export default function Navbar() {
             className="absolute top-0 right-0 h-full w-80 bg-[#0A160E] border-l border-[#1A2E20] shadow-2xl flex flex-col pt-8 pb-8 px-8 text-ivory"
           >
             <div className="flex items-center justify-between pb-6 border-b border-[#1A2E20] mb-8">
-              <span className="font-serif text-2xl font-medium text-[#F8F5ED] tracking-wider uppercase">
-                AUREATE
-              </span>
+              <div className="flex items-center gap-2.5">
+                <img
+                  src={aureateLogo}
+                  alt="AUREATE Official Emblem"
+                  className="h-8 w-auto object-contain rounded-md"
+                />
+                <span className="font-serif text-2xl font-medium text-[#F8F5ED] tracking-wider uppercase">
+                  AUREATE
+                </span>
+              </div>
               <button
                 onClick={closeMobileMenu}
                 className="min-w-[44px] min-h-[44px] flex items-center justify-center text-stone-300 hover:text-gold rounded-lg cursor-pointer"

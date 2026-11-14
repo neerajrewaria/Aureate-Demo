@@ -105,15 +105,18 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar — Clean, minimal, without public admin demo links */}
+      {/* Bottom bar — Clean, minimal, with refined developer attribution */}
       <div className="border-t border-stone-800/80">
         <div className="container-site py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-stone-300">
           <p>
-            AUREATE &bull; Nature, Thoughtfully Formulated. All rights reserved.
+            &copy; {new Date().getFullYear()} AUREATE &bull; Nature, Thoughtfully Formulated. All rights reserved.
           </p>
-          <p className="text-stone-400">
-            Frontend Demonstration Experience
-          </p>
+          <div className="flex items-center gap-2 text-xs text-stone-300">
+            <span className="text-stone-400">Developed by</span>
+            <span className="text-gold font-serif text-[15px] font-medium tracking-wide">
+              Neeraj
+            </span>
+          </div>
         </div>
       </div>
 
